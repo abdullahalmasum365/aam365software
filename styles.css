@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg-pitch: #000000;
+  --bg-surface: #0a0a0d;
+  --bg-card: rgba(18, 18, 22, 0.7);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-glass-hover: rgba(255, 255, 255, 0.2);
+  --apple-blue: #2997ff;
+  --apple-cyan: #00f2fe;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #000000;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "SF Pro Display", Roboto, sans-serif;
+  background-color: var(--bg-pitch);
+  color: #f5f5f7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Polarized Frosted Glass Navigation */
+.glass-nav {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+/* Polarized Glass Cards */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.glass-card:hover {
+  border-color: var(--border-glass-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 30px -10px rgba(41, 151, 255, 0.15);
+}
+
+/* Story Chapters on Full-Screen Hero (NO BOX, PURE TYPOGRAPHY) */
+.story-chapter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.story-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  margin-bottom: 1rem;
+}
+
+/* Clean typography panel without any ash/gray box background */
+.story-glass-panel {
+  background: transparent !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  padding: 1rem;
+  max-width: 52rem;
+}
+
+.text-apple-shadow {
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.95), 0 1px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* Full Hero Canvas */
+#hero-canvas {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
+
+/* Text Gradients */
+.text-gradient-apple {
+  background: linear-gradient(180deg, #ffffff 20%, #a1a1a6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #2997ff 0%, #00f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Apple Buttons */
+.btn-apple-primary {
+  background: #ffffff;
+  color: #000000;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 13px 30px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.btn-apple-primary:hover {
+  background: #f0f0f3;
+  transform: scale(1.03);
+  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.3);
+}
+
+.btn-apple-secondary {
+  background: rgba(0, 0, 0, 0.6);
+  color: #f5f5f7;
+  font-weight: 500;
+  border-radius: 9999px;
+  padding: 13px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.btn-apple-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: scale(1.03);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #25262c;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3c3d47;
+}

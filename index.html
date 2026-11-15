@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aam365 SOFTWARE | Engineering Modern Mobile Apps & Scalable Software</title>
+  <meta name="description" content="aam365 SOFTWARE is an independent software studio based in Bangladesh, dedicated to crafting high-performance, user-centric digital products.">
+  <meta name="keywords" content="aam365 SOFTWARE, Mobile App Development, Flutter, iOS, Android, Software Studio, Bangladesh, Bogura, Adhkar 365">
+  
+  <!-- Favicon / Apple Touch Icon -->
+  <link rel="icon" type="image/png" href="assets/logo-white.png">
+  <link rel="apple-touch-icon" href="assets/logo-white.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            apple: {
+              pitch: '#000000',
+              gray: '#86868b',
+              light: '#f5f5f7',
+              blue: '#2997ff',
+              cyan: '#00f2fe',
+              card: '#121216',
+              border: 'rgba(255, 255, 255, 0.08)'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-black text-zinc-100 antialiased selection:bg-blue-600/30 selection:text-white">
+
+  <!-- ==========================================
+       SECTION 1: HEADER & NAVIGATION BAR
+       ========================================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo Left -->
+      <a href="#" class="flex items-center gap-3 group focus:outline-none" aria-label="aam365 SOFTWARE Home">
+        <img src="assets/logo-nav.png" alt="aam365 SOFTWARE" class="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-[14px] font-medium text-zinc-300">
+        <a href="#services" class="px-3.5 py-2 rounded-full hover:text-white hover:bg-white/[0.06] transition-all duration-200">Services</a>
+        <a href="#about" class="px-3.5 py-2 rounded-full hover:text-white hover:bg-white/[0.06] transition-all duration-200">About Us</a>
+        <a href="#portfolio" class="px-3.5 py-2 rounded-full hover:text-white hover:bg-white/[0.06] transition-all duration-200">Portfolio</a>
+        <a href="#verification" class="px-3.5 py-2 rounded-full hover:text-white hover:bg-white/[0.06] transition-all duration-200 flex items-center gap-1.5 text-blue-400 hover:text-blue-300">
+          <i data-lucide="shield-check" class="w-4 h-4"></i>
+          <span>Company Verification</span>
+        </a>
+        <a href="#contact" class="px-3.5 py-2 rounded-full hover:text-white hover:bg-white/[0.06] transition-all duration-200">Contact</a>
+      </nav>
+
+      <!-- Right CTA Button -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="#contact" class="btn-apple-primary text-sm font-semibold tracking-tight shadow-lg shadow-white/10 hover:shadow-white/20">
+          <span>Get in Touch</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <div class="flex md:hidden">
+        <button id="mobile-menu-btn" class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-zinc-300 hover:text-white focus:outline-none" aria-label="Open Menu">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col bg-black/95 backdrop-blur-2xl border-l border-white/10">
+    <div class="p-6 flex items-center justify-between border-b border-white/10">
+      <img src="assets/logo-nav.png" alt="aam365 SOFTWARE" class="h-8 w-auto">
+      <button id="mobile-drawer-close" class="p-2 rounded-lg bg-white/5 text-zinc-400 hover:text-white">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <div class="p-6 flex flex-col space-y-4 text-lg font-medium text-zinc-300">
+      <a href="#services" class="mobile-nav-link py-2 border-b border-white/5 hover:text-white">Services</a>
+      <a href="#about" class="mobile-nav-link py-2 border-b border-white/5 hover:text-white">About Us</a>
+      <a href="#portfolio" class="mobile-nav-link py-2 border-b border-white/5 hover:text-white">Portfolio</a>
+      <a href="#verification" class="mobile-nav-link py-2 border-b border-white/5 text-blue-400 flex items-center gap-2">
+        <i data-lucide="shield-check" class="w-5 h-5"></i> Company Verification
+      </a>
+      <a href="#contact" class="mobile-nav-link py-2 hover:text-white">Contact Us</a>
+    </div>
+    <div class="mt-auto p-6 border-t border-white/10">
+      <a href="#contact" class="mobile-nav-link btn-apple-primary w-full text-center py-3.5">
+        Get in Touch
+      </a>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SECTION 2: HERO SECTION WITH FULL-SCREEN SCROLLYTELLING
+       (INITIAL VIEW: ONLY THE 3D PUZZLE IS VISIBLE)
+       ========================================== -->
+  <section id="hero-scroll-track" class="relative w-full h-[320vh]">
+    
+    <!-- Sticky Full-Screen Viewport -->
+    <div class="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center">
+      
+      <!-- Full-Screen Edge-to-Edge Canvas -->
+      <canvas id="hero-canvas" class="absolute inset-0 w-full h-full block"></canvas>
+
+      <!-- Soft Vignette Lighting Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60 pointer-events-none"></div>
+
+      <!-- CHAPTER 1: REVEALED ONLY ON SCROLL DOWN (Scroll: 10% - 36%) -->
+      <div id="story-ch-1" class="story-chapter">
+        <div class="story-glass-panel">
+          <div class="story-pill-badge">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-xs uppercase tracking-widest text-zinc-200 font-semibold font-mono">Independent Software Studio</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1] text-apple-shadow">
+            Engineering Modern Mobile Apps &amp; Scalable Software Solutions
+          </h1>
+
+          <p class="mt-5 text-sm sm:text-xl text-zinc-200 font-normal leading-relaxed max-w-2xl mx-auto text-apple-shadow">
+            <span class="text-white font-semibold">aam365 SOFTWARE</span> is an independent software studio based in Bangladesh, dedicated to crafting high-performance, user-centric digital products.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <a href="#portfolio" class="btn-apple-primary text-sm py-2.5 px-6 pointer-events-auto">
+              <span>Explore Our Work</span>
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+            </a>
+            <a href="#about" class="btn-apple-secondary text-sm py-2.5 px-6 pointer-events-auto">
+              <span>About Company</span>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHAPTER 2: CROSS-PLATFORM ARCHITECTURE (Scroll: 39% - 66%) -->
+      <div id="story-ch-2" class="story-chapter">
+        <div class="story-glass-panel">
+          <div class="story-pill-badge text-blue-300">
+            <i data-lucide="smartphone" class="w-3.5 h-3.5 text-blue-400"></i>
+            <span class="text-xs uppercase tracking-wider font-mono font-semibold">iOS &amp; Android Ecosystem</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] text-apple-shadow">
+            Cross-Platform Complexity.<br><span class="text-gradient-blue">Solved with Precision.</span>
+          </h2>
+
+          <p class="mt-4 text-sm sm:text-lg text-zinc-200 leading-relaxed max-w-xl mx-auto text-apple-shadow">
+            We architect seamless cross-device mobile applications with Flutter and native Kotlin/Swift engines, maintaining 60 FPS buttery fluidity on every screen.
+          </p>
+
+          <div class="mt-6 flex flex-wrap justify-center gap-2">
+            <span class="px-3.5 py-1.5 rounded-full bg-black/60 text-xs text-zinc-200 border border-white/20 font-mono text-apple-shadow">Flutter Native Engine</span>
+            <span class="px-3.5 py-1.5 rounded-full bg-black/60 text-xs text-zinc-200 border border-white/20 font-mono text-apple-shadow">iOS (Swift)</span>
+            <span class="px-3.5 py-1.5 rounded-full bg-black/60 text-xs text-zinc-200 border border-white/20 font-mono text-apple-shadow">Android (Kotlin)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHAPTER 3: PRIVACY & STORE READINESS (Scroll: 69% - 98%) -->
+      <div id="story-ch-3" class="story-chapter">
+        <div class="story-glass-panel">
+          <div class="story-pill-badge text-emerald-300">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span class="text-xs uppercase tracking-wider font-mono font-semibold">Privacy-First Architecture</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1] text-apple-shadow">
+            Zero Trackers.<br>Engineered for Apple &amp; Google Stores.
+          </h2>
+
+          <p class="mt-4 text-sm sm:text-lg text-zinc-200 leading-relaxed max-w-xl mx-auto text-apple-shadow">
+            Strict privacy-first principles with zero third-party telemetry brokers, hardened encrypted APIs, and audited store compliance.
+          </p>
+
+          <div class="mt-8">
+            <a href="#services" class="btn-apple-primary text-sm py-3 px-8 pointer-events-auto shadow-2xl">
+              <span>Explore Our Core Services</span>
+              <i data-lucide="arrow-down" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Scroll Prompt (Visible on first visit to prompt scroll) -->
+      <div id="scroll-prompt" class="absolute bottom-8 z-10 flex flex-col items-center gap-2 pointer-events-none transition-opacity duration-300">
+        <span class="text-[11px] tracking-widest uppercase text-white/90 font-mono text-apple-shadow">Scroll to explore</span>
+        <div class="w-5 h-8 rounded-full border border-white/50 flex items-start justify-center p-1 shadow-lg bg-black/30 backdrop-blur-sm">
+          <div class="w-1.5 h-2 bg-white rounded-full animate-bounce"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 3: CORE SERVICES
+       ========================================== -->
+  <section id="services" class="relative py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.05] border border-white/10 text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-4">
+        Our Capabilities
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+        Core Engineering Services
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-zinc-400 font-normal">
+        Comprehensive digital engineering across four dedicated pillars:
+      </p>
+    </div>
+
+    <!-- 4 Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Service 1: Mobile App Dev -->
+      <div class="glass-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between group">
+        <div>
+          <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform duration-300">
+            <i data-lucide="smartphone" class="w-7 h-7"></i>
+          </div>
+          <span class="text-xs font-mono text-blue-400 uppercase tracking-wider">Flagship Offering</span>
+          <h3 class="text-2xl font-bold text-white mt-1 mb-3">Mobile App Development</h3>
+          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+            High-performance applications for Android &amp; iOS built with Flutter and Native architecture. Designed for 60fps animations, offline-first reliability, and seamless store approval.
+          </p>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/5 flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">Flutter</span>
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">Android (Kotlin)</span>
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">iOS (Swift)</span>
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">Play Console &amp; App Store</span>
+        </div>
+      </div>
+
+      <!-- Service 2: Web App Engineering -->
+      <div class="glass-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between group">
+        <div>
+          <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform duration-300">
+            <i data-lucide="laptop" class="w-7 h-7"></i>
+          </div>
+          <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider">Web &amp; Cloud</span>
+          <h3 class="text-2xl font-bold text-white mt-1 mb-3">Web Application Engineering</h3>
+          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+            Responsive, modern, cloud-connected web platforms. From blazing-fast landing experiences to full-scale enterprise management dashboards with 100/100 Core Web Vitals.
+          </p>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/5 flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">React / Next.js</span>
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">Tailwind CSS</span>
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">TypeScript</span>
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">Vercel &amp; Cloudflare</span>
+        </div>
+      </div>
+
+      <!-- Service 3: UI/UX & Product Design -->
+      <div class="glass-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between group">
+        <div>
+          <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform duration-300">
+            <i data-lucide="palette" class="w-7 h-7"></i>
+          </div>
+          <span class="text-xs font-mono text-purple-400 uppercase tracking-wider">Experience Design</span>
+          <h3 class="text-2xl font-bold text-white mt-1 mb-3">UI/UX &amp; Product Design</h3>
+          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+            Clean, intuitive, and accessible user experiences influenced by Apple's Human Interface Guidelines. Pixel-perfect component design systems, frictionless onboarding flows, and micro-interactions.
+          </p>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/5 flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">Figma Design Systems</span>
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">Polarized Dark UI</span>
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">Accessibility (a11y)</span>
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">Interactive Prototyping</span>
+        </div>
+      </div>
+
+      <!-- Service 4: API & Cloud Architecture -->
+      <div class="glass-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between group">
+        <div>
+          <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform duration-300">
+            <i data-lucide="shield" class="w-7 h-7"></i>
+          </div>
+          <span class="text-xs font-mono text-emerald-400 uppercase tracking-wider">Backend &amp; Security</span>
+          <h3 class="text-2xl font-bold text-white mt-1 mb-3">API &amp; Cloud Architecture</h3>
+          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+            Secure backend integrations, microservices, and encrypted cloud storage solutions. Engineered with strict rate-limiting, edge caching, and hardened database architectures.
+          </p>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/5 flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">REST &amp; GraphQL</span>
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">PostgreSQL / Supabase</span>
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">Edge Computing</span>
+          <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-zinc-300 border border-white/10 font-mono">Zero-Knowledge Storage</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ==========================================
+       SECTION 4: ABOUT COMPANY & VALUES
+       ========================================== -->
+  <section id="about" class="relative py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Story -->
+      <div class="lg:col-span-6 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.05] border border-white/10 text-xs font-semibold text-zinc-400 uppercase tracking-widest">
+          Who We Are
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+          Crafting Software That Respects User Privacy &amp; Performance
+        </h2>
+        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed">
+          As an independent software studio, our mission is to build reliable, high-performance, and sustainable software while strictly safeguarding user data privacy.
+        </p>
+        <p class="text-zinc-400 text-sm sm:text-base leading-relaxed">
+          Operating from Bangladesh, <strong class="text-white">aam365 SOFTWARE</strong> focuses on engineering purpose-built digital tools that eliminate unnecessary bloatware, aggressive ad trackers, and privacy violations. We believe software should simply work—swiftly, beautifully, and reliably.
+        </p>
+
+        <div class="pt-4 flex items-center gap-8">
+          <div>
+            <div class="text-3xl font-extrabold text-white">100%</div>
+            <div class="text-xs text-zinc-400 uppercase tracking-wider font-mono mt-1">Independent Studio</div>
+          </div>
+          <div class="w-px h-12 bg-white/10"></div>
+          <div>
+            <div class="text-3xl font-extrabold text-blue-400">Zero</div>
+            <div class="text-xs text-zinc-400 uppercase tracking-wider font-mono mt-1">Ad-Tracking Policy</div>
+          </div>
+          <div class="w-px h-12 bg-white/10"></div>
+          <div>
+            <div class="text-3xl font-extrabold text-emerald-400">Verified</div>
+            <div class="text-xs text-zinc-400 uppercase tracking-wider font-mono mt-1">Corporate Entity</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: 3 Core Pillars -->
+      <div class="lg:col-span-6 space-y-5">
+        
+        <!-- Value 1: Transparency -->
+        <div class="glass-card rounded-2xl p-6 flex items-start gap-5">
+          <div class="p-3 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20 shrink-0">
+            <i data-lucide="eye" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Transparency</h3>
+            <p class="text-sm text-zinc-400 mt-1 leading-relaxed">
+              No hidden algorithms, dark UX patterns, or undisclosed data harvesting. We maintain clear terms and full architectural clarity with our users and partners.
+            </p>
+          </div>
+        </div>
+
+        <!-- Value 2: Performance -->
+        <div class="glass-card rounded-2xl p-6 flex items-start gap-5">
+          <div class="p-3 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20 shrink-0">
+            <i data-lucide="zap" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Performance</h3>
+            <p class="text-sm text-zinc-400 mt-1 leading-relaxed">
+              Software optimized down to millisecond responsiveness. Lightweight memory footprints, lightning-fast boot sequences, and silky-smooth rendering.
+            </p>
+          </div>
+        </div>
+
+        <!-- Value 3: Privacy-First Engineering -->
+        <div class="glass-card rounded-2xl p-6 flex items-start gap-5">
+          <div class="p-3 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">
+            <i data-lucide="shield-alert" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">Privacy-First Engineering</h3>
+            <p class="text-sm text-zinc-400 mt-1 leading-relaxed">
+              We uphold privacy as a fundamental human right. All our products operate with strict data minimization principles and zero third-party telemetry brokers.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ==========================================
+       SECTION 5: PORTFOLIO / FEATURED WORK
+       ========================================== -->
+  <section id="portfolio" class="relative py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+    
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.05] border border-white/10 text-xs font-semibold text-zinc-400 uppercase tracking-widest mb-4">
+        Our Showcase
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+        Featured Products &amp; Work
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-zinc-400">
+        Our portfolio of deployed and upcoming high-utility digital applications:
+      </p>
+    </div>
+
+    <!-- 2 Main Cards -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+      <!-- Card 1: Adhkar 365 -->
+      <div class="glass-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between border-blue-500/20 shadow-2xl relative overflow-hidden group">
+        <div class="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-6">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-semibold">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Live Product
+            </span>
+            <span class="text-xs font-mono text-zinc-400">100% Free &amp; Ad-Free</span>
+          </div>
+
+          <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">
+            Adhkar 365
+          </h3>
+          <p class="text-blue-400 font-medium text-sm mb-4">
+            Daily Islamic Remembrance &amp; Spiritual Utility App
+          </p>
+          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed mb-6">
+            A serene, distraction-free spiritual companion designed for daily morning and evening Adhkar, authenticated supplications, and Quranic reflections. Engineered with zero commercial advertising, zero user tracking, and full offline-first functionality.
+          </p>
+
+          <ul class="space-y-2.5 text-sm text-zinc-300 mb-8">
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+              <span>100% Free &amp; Absolutely Ad-Free forever</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+              <span>Minimalist dark &amp; light theme with high contrast</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+              <span>Zero background analytics or identity collectors</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-6 border-t border-white/10 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs text-zinc-400 font-mono">Flutter</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs text-zinc-400 font-mono">Mobile</span>
+          </div>
+          <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-400 hover:text-blue-300">
+            <span>Inquire About App</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: Upcoming Enterprise Tool -->
+      <div class="glass-card rounded-3xl p-8 sm:p-10 flex flex-col justify-between border-purple-500/20 shadow-2xl relative overflow-hidden group">
+        <div class="absolute -top-20 -right-20 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div>
+          <div class="flex items-center justify-between gap-4 mb-6">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/30 text-xs font-semibold">
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
+              In Development
+            </span>
+            <span class="text-xs font-mono text-zinc-400">Upcoming Release</span>
+          </div>
+
+          <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">
+            Enterprise &amp; Productivity Suite
+          </h3>
+          <p class="text-purple-400 font-medium text-sm mb-4">
+            Next-Gen Workflow Automation &amp; Cloud Intelligence
+          </p>
+          <p class="text-zinc-400 text-sm sm:text-base leading-relaxed mb-6">
+            An advanced cross-device workspace platform tailored for high-output teams, independent studios, and modern businesses. Providing end-to-end operational visibility, real-time sync, and intelligent automated workflows without vendor lock-in.
+          </p>
+
+          <ul class="space-y-2.5 text-sm text-zinc-300 mb-8">
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="cpu" class="w-4 h-4 text-purple-400"></i>
+              <span>Modular architecture with plug-and-play APIs</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="lock" class="w-4 h-4 text-purple-400"></i>
+              <span>Hardware-level encryption for enterprise assets</span>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="sparkles" class="w-4 h-4 text-purple-400"></i>
+              <span>Intuitive polarized UI designed for focus</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-6 border-t border-white/10 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs text-zinc-400 font-mono">Cloud</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 text-xs text-zinc-400 font-mono">Web / Desktop</span>
+          </div>
+          <span class="text-xs text-zinc-500 font-mono">Coming Soon</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ==========================================
+       SECTION 6: CORPORATE VERIFICATION (⭐ CRITICAL)
+       ========================================== -->
+  <section id="verification" class="relative py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+    
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-4">
+        <i data-lucide="shield-check" class="w-4 h-4"></i> Verified Organization
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+        Corporate Verification &amp; Registration
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-zinc-400">
+        Official credentials and registry records of our registered software studio:
+      </p>
+    </div>
+
+    <!-- Central Official Credentials Card -->
+    <div class="max-w-4xl mx-auto">
+      <div class="relative glass-card rounded-3xl p-8 sm:p-12 border-emerald-500/30 shadow-[0_0_80px_-20px_rgba(16,185,129,0.2)]">
+        
+        <!-- Watermark Security Crest -->
+        <div class="absolute -right-12 -bottom-12 opacity-5 pointer-events-none">
+          <i data-lucide="shield-check" class="w-80 h-80 text-white"></i>
+        </div>
+
+        <!-- Card Top Bar: Status & Badges -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-white/10">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+              <i data-lucide="badge-check" class="w-7 h-7"></i>
+            </div>
+            <div>
+              <span class="text-xs uppercase font-mono tracking-wider text-emerald-400 font-semibold">Government &amp; Global Registry</span>
+              <h3 class="text-xl font-bold text-white">Official Business Credentials</h3>
+            </div>
+          </div>
+
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold font-mono">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            STATUS: ACTIVE &amp; VERIFIED
+          </div>
+        </div>
+
+        <!-- 4 Credential Blocks -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
+          
+          <!-- Legal Entity -->
+          <div class="p-5 rounded-2xl bg-black/60 border border-white/10">
+            <span class="text-xs font-mono uppercase text-zinc-400 flex items-center gap-1.5">
+              <i data-lucide="briefcase" class="w-4 h-4 text-zinc-400"></i> Legal Entity Name
+            </span>
+            <div class="text-xl font-bold text-white mt-1">
+              AAM365 SOFTWARE
+            </div>
+            <div class="text-xs text-zinc-400 mt-1 font-mono">
+              Structure: Sole Proprietorship
+            </div>
+          </div>
+
+          <!-- Global Registry Authentication -->
+          <div class="p-5 rounded-2xl bg-black/60 border border-blue-500/40 relative group">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono uppercase text-blue-400 flex items-center gap-1.5">
+                <i data-lucide="globe" class="w-4 h-4 text-blue-400"></i> Global Corporate Registry
+              </span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-mono">AUTHENTICATED</span>
+            </div>
+            
+            <div class="text-lg font-bold text-white mt-2">
+              Dun &amp; Bradstreet Verified
+            </div>
+            <div class="text-[11px] text-zinc-400 mt-1">
+              Officially recognized and verified for Apple Developer &amp; Google Play Console operations.
+            </div>
+          </div>
+
+          <!-- Trade License / Local Government Registration -->
+          <div class="p-5 rounded-2xl bg-black/60 border border-white/10">
+            <span class="text-xs font-mono uppercase text-zinc-400 flex items-center gap-1.5">
+              <i data-lucide="file-check-2" class="w-4 h-4 text-zinc-400"></i> Government Entity Status
+            </span>
+            <div class="text-lg font-bold text-white mt-1">
+              Official Registered Trade Entity
+            </div>
+            <div class="text-xs text-zinc-400 mt-1">
+              Authority: Local Government Division, Sonatala, Bogura
+            </div>
+          </div>
+
+          <!-- Registered Office Address -->
+          <div class="p-5 rounded-2xl bg-black/60 border border-white/10">
+            <span class="text-xs font-mono uppercase text-zinc-400 flex items-center gap-1.5">
+              <i data-lucide="map-pin" class="w-4 h-4 text-zinc-400"></i> Registered Corporate Address
+            </span>
+            <div class="text-sm font-semibold text-white mt-1 leading-snug">
+              Namajkhali, Horikhali (5826), Sonatala
+            </div>
+            <div class="text-xs text-zinc-400 mt-0.5">
+              Bogura, Rajshahi Division, Bangladesh
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Audit Note -->
+        <div class="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-zinc-400">
+          <div class="flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+            <span>Audited &amp; Authenticated for Global App Reviewers &amp; Enterprise Clients</span>
+          </div>
+          <div class="font-mono text-zinc-400">
+            Jurisdiction: Bangladesh (Govt. ID)
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ==========================================
+       SECTION 7: CONTACT US
+       ========================================== -->
+  <section id="contact" class="relative py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/5">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      
+      <!-- Left Column: Info & Direct Reach -->
+      <div class="lg:col-span-5 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.05] border border-white/10 text-xs font-semibold text-zinc-400 uppercase tracking-widest">
+          Initiate Conversation
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          Let’s Build Something Exceptional
+        </h2>
+        <p class="text-zinc-400 text-base leading-relaxed">
+          Have an idea for a mobile application, high-scale web system, or want to explore partnership opportunities? Reach out to us directly.
+        </p>
+
+        <div class="space-y-4 pt-4">
+          
+          <!-- Official Support Desk Card -->
+          <a href="mailto:aam365support@gmail.com" class="glass-card rounded-2xl p-5 flex items-center gap-4 group hover:border-blue-500/40">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <i data-lucide="headphones" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <span class="text-xs uppercase font-mono text-blue-400 font-semibold">Official Support Desk</span>
+              <div class="text-base font-semibold text-white group-hover:text-blue-400 transition-colors">
+                aam365support@gmail.com
+              </div>
+            </div>
+          </a>
+
+          <!-- Founder / Direct Email Card -->
+          <a href="mailto:abdullahalmasum365@gmail.com" class="glass-card rounded-2xl p-5 flex items-center gap-4 group hover:border-purple-500/40">
+            <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <i data-lucide="mail" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <span class="text-xs uppercase font-mono text-zinc-400">Founder &amp; Executive Direct</span>
+              <div class="text-base font-semibold text-white group-hover:text-purple-400 transition-colors">
+                abdullahalmasum365@gmail.com
+              </div>
+            </div>
+          </a>
+
+          <!-- Location Card -->
+          <div class="glass-card rounded-2xl p-5 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+              <i data-lucide="map-pin" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <span class="text-xs uppercase font-mono text-zinc-400">Location &amp; Operations</span>
+              <div class="text-base font-semibold text-white">
+                Bogura, Bangladesh
+              </div>
+            </div>
+          </div>
+
+          <!-- Timezone & Response -->
+          <div class="glass-card rounded-2xl p-5 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+              <i data-lucide="clock" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <span class="text-xs uppercase font-mono text-zinc-400">Response Window</span>
+              <div class="text-base font-semibold text-white">
+                Prompt response within 12 hours (GMT+6)
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Contact Form -->
+      <div class="lg:col-span-7">
+        <div class="glass-card rounded-3xl p-8 sm:p-10 border-white/10 shadow-2xl">
+          <h3 class="text-2xl font-bold text-white mb-2">Send a Direct Message</h3>
+          <p class="text-sm text-zinc-400 mb-8">Fill in the parameters below to connect directly with our engineering lead.</p>
+
+          <form id="contact-form" class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="contact-name" class="block text-xs font-mono uppercase text-zinc-400 mb-2">Your Name *</label>
+                <input type="text" id="contact-name" required placeholder="Abdullah Al Masum" 
+                       class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500 transition-colors text-sm">
+              </div>
+              <div>
+                <label for="contact-email" class="block text-xs font-mono uppercase text-zinc-400 mb-2">Email Address *</label>
+                <input type="email" id="contact-email" required placeholder="name@company.com" 
+                       class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500 transition-colors text-sm">
+              </div>
+            </div>
+
+            <div>
+              <label for="contact-service" class="block text-xs font-mono uppercase text-zinc-400 mb-2">Primary Interest / Scope</label>
+              <select id="contact-service" class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-blue-500 transition-colors text-sm">
+                <option value="Mobile App Development">Mobile App Development (Flutter / Native)</option>
+                <option value="Web Application Engineering">Web Application Engineering</option>
+                <option value="UI/UX Product Design">UI/UX &amp; Product Design</option>
+                <option value="Corporate / Partnership Inquiry">Corporate / Partnership Inquiry</option>
+                <option value="Adhkar 365 Support">Adhkar 365 Support</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="contact-message" class="block text-xs font-mono uppercase text-zinc-400 mb-2">Your Message *</label>
+              <textarea id="contact-message" rows="4" required placeholder="Tell us about your project specifications, timelines, or questions..." 
+                        class="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500 transition-colors text-sm resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="btn-apple-primary w-full py-4 text-base font-semibold shadow-xl shadow-white/10">
+              <span>Send Message</span>
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+          </form>
+
+          <div id="form-feedback" class="hidden mt-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm flex items-center gap-3">
+            <i data-lucide="check-circle" class="w-5 h-5 shrink-0"></i>
+            <span>Thank you! Your email client has been prepared. You can send the message directly to <strong class="underline">aam365support@gmail.com</strong>.</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ==========================================
+       SECTION 8: FOOTER
+       ========================================== -->
+  <footer class="border-t border-white/10 bg-black/90 py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      
+      <!-- Logo & Copyright -->
+      <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+        <img src="assets/logo-nav.png" alt="aam365 SOFTWARE" class="h-8 w-auto">
+        <div class="text-xs text-zinc-400">
+          <div>© 2026 <strong class="text-zinc-300">aam365 SOFTWARE</strong>. All Rights Reserved.</div>
+          <div class="font-mono text-zinc-400 mt-0.5">Officially Registered Software Entity | Bogura, Bangladesh</div>
+        </div>
+      </div>
+
+      <!-- Quick Nav & Policy Links -->
+      <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-zinc-400">
+        <a href="#services" class="hover:text-white transition-colors">Services</a>
+        <a href="#about" class="hover:text-white transition-colors">About Us</a>
+        <a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a>
+        <a href="#verification" class="hover:text-white transition-colors">Verification</a>
+        <span class="text-zinc-700">|</span>
+        <a href="#" id="btn-open-privacy" class="hover:text-blue-400 transition-colors">Privacy Policy</a>
+        <a href="#" id="btn-open-terms" class="hover:text-blue-400 transition-colors">Terms of Service</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       MODALS: PRIVACY POLICY & TERMS OF SERVICE
+       ========================================== -->
+  
+  <!-- Privacy Policy Modal -->
+  <div id="modal-privacy" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-xl hidden items-center justify-center p-4">
+    <div class="glass-card w-full max-w-2xl max-h-[85vh] rounded-3xl p-6 sm:p-8 flex flex-col border-white/20 shadow-2xl overflow-hidden">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        <div class="flex items-center gap-2 text-white font-bold text-lg">
+          <i data-lucide="shield" class="w-5 h-5 text-emerald-400"></i>
+          <span>Privacy Policy</span>
+        </div>
+        <button id="btn-close-privacy" class="p-2 rounded-lg bg-white/5 text-zinc-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="overflow-y-auto py-6 space-y-4 text-sm text-zinc-300 pr-2">
+        <p class="font-semibold text-white">Effective Date: January 1, 2026</p>
+        <p>At <strong class="text-white">aam365 SOFTWARE</strong> (Sole Proprietorship), we operate under strict privacy-first engineering standards. This policy outlines our commitment to transparency regarding user data across our mobile applications (including <em>Adhkar 365</em>) and web platforms.</p>
+        <h4 class="font-bold text-white pt-2">1. Zero Data Harvesting &amp; No Third-Party Trackers</h4>
+        <p>We do not collect personal identifiers, sell browsing patterns, or embed commercial advertising trackers. Our mobile utility applications (e.g., Adhkar 365) operate completely locally on your device without transmitting private usage histories.</p>
+        <h4 class="font-bold text-white pt-2">2. Communication Information</h4>
+        <p>When you contact us directly via email (aam365support@gmail.com or abdullahalmasum365@gmail.com), your message and contact details are used solely to reply to your inquiry. We never share your email address with marketing entities.</p>
+        <h4 class="font-bold text-white pt-2">3. Compliance &amp; Jurisdiction</h4>
+        <p>aam365 SOFTWARE adheres to relevant digital privacy legislation and complies with international app store developer guidelines including Apple App Store and Google Play Developer Program policies.</p>
+        <h4 class="font-bold text-white pt-2">4. Contact Information</h4>
+        <p>For any privacy-related inquiries, contact our legal entity at: <strong class="text-blue-400">aam365support@gmail.com</strong>, Namajkhali, Horikhali (5826), Sonatala, Bogura, Bangladesh.</p>
+      </div>
+      <div class="pt-4 border-t border-white/10 text-right">
+        <button onclick="document.getElementById('modal-privacy').classList.add('hidden'); document.body.style.overflow='';" class="btn-apple-secondary text-xs py-2 px-5">
+          Close Window
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terms of Service Modal -->
+  <div id="modal-terms" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-xl hidden items-center justify-center p-4">
+    <div class="glass-card w-full max-w-2xl max-h-[85vh] rounded-3xl p-6 sm:p-8 flex flex-col border-white/20 shadow-2xl overflow-hidden">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        <div class="flex items-center gap-2 text-white font-bold text-lg">
+          <i data-lucide="file-text" class="w-5 h-5 text-blue-400"></i>
+          <span>Terms of Service</span>
+        </div>
+        <button id="btn-close-terms" class="p-2 rounded-lg bg-white/5 text-zinc-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="overflow-y-auto py-6 space-y-4 text-sm text-zinc-300 pr-2">
+        <p class="font-semibold text-white">Effective Date: January 1, 2026</p>
+        <p>Welcome to <strong class="text-white">aam365 SOFTWARE</strong>. By utilizing our website, software products, or engaging our engineering studio, you agree to these Terms.</p>
+        <h4 class="font-bold text-white pt-2">1. Intellectual Property &amp; Trademarks</h4>
+        <p>All software architecture, logos, branding, and original source artifacts generated under aam365 SOFTWARE are protected under applicable intellectual property laws.</p>
+        <h4 class="font-bold text-white pt-2">2. Free &amp; Open Utilities</h4>
+        <p>Applications designated as free utilities (such as Adhkar 365) are provided for spiritual and educational benefit without charge. Modification or commercial distribution without written consent is prohibited.</p>
+        <h4 class="font-bold text-white pt-2">3. Corporate Entity</h4>
+        <p>aam365 SOFTWARE is an officially registered sole proprietorship in Sonatala, Bogura, Bangladesh.</p>
+      </div>
+      <div class="pt-4 border-t border-white/10 text-right">
+        <button onclick="document.getElementById('modal-terms').classList.add('hidden'); document.body.style.overflow='';" class="btn-apple-secondary text-xs py-2 px-5">
+          Close Window
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+  </script>
+
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
