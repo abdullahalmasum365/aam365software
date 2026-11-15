@@ -6,7 +6,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   initFullScreenScrollytelling();
   initMobileNav();
-  initContactForm();
   initModals();
   initSmoothScroll();
 });
@@ -213,39 +212,6 @@ function initMobileNav() {
   }
 }
 
-/* ============================================================
-   4. CONTACT FORM HANDLER
-   ============================================================ */
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  const formFeedback = document.getElementById('form-feedback');
-
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('contact-name').value.trim();
-      const email = document.getElementById('contact-email').value.trim();
-      const message = document.getElementById('contact-message').value.trim();
-
-      if (!name || !email || !message) {
-        showToast('Please fill in all required fields.');
-        return;
-      }
-
-      const subject = encodeURIComponent(`Inquiry from ${name} via aam365 SOFTWARE`);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-      const mailtoUrl = `mailto:aam365support@gmail.com?subject=${subject}&body=${body}`;
-
-      window.location.href = mailtoUrl;
-
-      if (formFeedback) {
-        formFeedback.classList.remove('hidden');
-        form.reset();
-      }
-      showToast('Opening email client for aam365support@gmail.com...');
-    });
-  }
-}
 
 /* ============================================================
    5. PRIVACY POLICY & TERMS MODALS
